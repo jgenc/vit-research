@@ -37,12 +37,10 @@ def plot_results(
     )
     axs[0].legend()
 
-    axs[1].plot(epoch, np.array(test_loss_epochs),
-                label="Test", c="red", marker="o")
+    axs[1].plot(epoch, np.array(test_loss_epochs), label="Test", c="red", marker="o")
     axs[1].set_xlabel("Epoch")
     axs[1].set_ylabel("Loss")
-    axs[1].plot(epoch, np.array(train_loss_epochs),
-                label="Train", c="blue", marker="o")
+    axs[1].plot(epoch, np.array(train_loss_epochs), label="Train", c="blue", marker="o")
     axs[1].legend()
     fig.show()
 
@@ -121,6 +119,7 @@ def save_metrics(
         "N_EPOCHS": N_EPOCHS,
         "LR": LR,
     }
+    os.makedirs("metrics", exist_ok=True)
     np.savez(
         os.path.join("metrics", name),
         train_accuracy,
